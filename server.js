@@ -6,9 +6,9 @@ const cron = require('node-cron')
 const moment = require('moment-timezone');
 const LA_TIMEZONE = 'America/Los_Angeles';
 
-cron.schedule("*/04 * 19-20 * * *" , () => {
+cron.schedule("0 8-16 * * *" , () => {
     const now = moment.tz(LA_TIMEZONE)
-    console.log('running task every 4 seconds from 7-8')
+    console.log('running task every hour from 8-4pm')
     console.log('current date: ', now.toLocaleString())
 }, {timezone: LA_TIMEZONE});
 
