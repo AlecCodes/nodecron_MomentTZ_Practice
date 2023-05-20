@@ -8,14 +8,14 @@ const LA_TIMEZONE = 'America/Los_Angeles';
 const report = require('./Models/report')
 
 
-cron.schedule("0 12 * * *" , () => {
+const task = cron.schedule("* 0 12 * * *" , () => {
     const now = moment.tz(LA_TIMEZONE).format('YYYY-MM-DD HH:mm:ss')
     const document = {date : now}
     report.create(document)
     console.log('running task every day at noon')
     console.log('current date: ', now)
 }, {timezone: LA_TIMEZONE});
-
+task.start()
 
 //listener
 app.listen(PORT, () => console.log(`TURNING UP ON PORT ${PORT}`))
